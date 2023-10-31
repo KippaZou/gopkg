@@ -18,14 +18,15 @@ import "time"
 
 // State changes between Closed, Open, HalfOpen
 // [Closed] -->- tripped ----> [Open]<-------+
-//    ^                          |           ^
-//    |                          v           |
-//    +                          |      detect fail
-//    |                          |           |
-//    |                    cooling timeout   |
-//    ^                          |           ^
-//    |                          v           |
-//    +--- detect succeed --<-[HalfOpen]-->--+
+//
+//	^                          |           ^
+//	|                          v           |
+//	+                          |      detect fail
+//	|                          |           |
+//	|                    cooling timeout   |
+//	^                          |           ^
+//	|                          v           |
+//	+--- detect succeed --<-[HalfOpen]-->--+
 //
 // The behaviors of each states:
 // =================================================================================================
@@ -100,7 +101,7 @@ const (
 	// bucket nums is the number of buckets the metricser has;
 	// the more buckets you have, the less counters you lose when
 	// the oldest bucket expire;
-	defaultBucketNums = 100
+	defaultBucketNums = 300
 
 	// default window size is (defaultBucketTime * defaultBucketNums),
 	// which is 10 seconds;
